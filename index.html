@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Injector Free Fire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #000428, #004e92);
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #00aaff;
+        }
+
+        .input-group {
+            margin: 10px 0;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .input-group button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #007BFF;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .block {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .block button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #007BFF;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .block button:hover {
+            background: #0056b3;
+        }
+
+        .status {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #1f09e0;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginScreen" class="container">
+        <h1>Venz New Era</h1>
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Username">
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+        <div class="input-group">
+            <button id="loginBtn">Login</button>
+        </div>
+    </div>
+
+    <div id="injectorScreen" class="container" style="display: none;">
+        <div class="block">
+            <h2>AIMBOT</h2>
+            <button id="aimbotBtn">OFF</button>
+        </div>
+        <div class="block">
+            <h2>BYPAS VVIP</h2>
+            <button id="bypassBtn">OFF</button>
+        </div>
+        <div class="block">
+            <button id="injectBtn">INJECT TO GAME</button>
+        </div>
+        <div class="status" id="statusMessage"></div>
+        <div class="footer">Venz New Era</div>
+    </div>
+
+    <script>
+        // Login screen elements
+        const loginScreen = document.getElementById('loginScreen');
+        const injectorScreen = document.getElementById('injectorScreen');
+        const loginBtn = document.getElementById('loginBtn');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+
+        // Credentials
+        const correctUsername = 'Venznewera';
+        const correctPassword = '112211';
+
+        // Login functionality
+        loginBtn.addEventListener('click', () => {
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            if (username === correctUsername && password === correctPassword) {
+                loginScreen.style.display = 'none';
+                injectorScreen.style.display = 'block';
+            } else {
+                alert('Username atau Password salah!');
+            }
+        });
+
+        // Injector screen elements
+        let aimbotStatus = false;
+        let bypassStatus = false;
+
+        const aimbotBtn = document.getElementById('aimbotBtn');
+        const bypassBtn = document.getElementById('bypassBtn');
+        const injectBtn = document.getElementById('injectBtn');
+        const statusMessage = document.getElementById('statusMessage');
+
+        // AIMBOT toggle
+        aimbotBtn.addEventListener('click', () => {
+            aimbotStatus = !aimbotStatus;
+            aimbotBtn.textContent = aimbotStatus ? 'ON' : 'OFF';
+        });
+
+        // BYPAS VVIP toggle
+        bypassBtn.addEventListener('click', () => {
+            bypassStatus = !bypassStatus;
+            bypassBtn.textContent = bypassStatus ? 'ON' : 'OFF';
+        });
+
+        // INJECT TO GAME functionality
+        injectBtn.addEventListener('click', () => {
+            if (aimbotStatus || bypassStatus) {
+                statusMessage.textContent = 'INJECT ACTIVATED';
+                statusMessage.style.color = 'green';
+            } else {
+                statusMessage.textContent = 'PLEASE ACTIVATE A FEATURE FIRST';
+                statusMessage.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
